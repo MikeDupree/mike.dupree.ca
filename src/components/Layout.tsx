@@ -7,7 +7,7 @@ type Props = {
 
 const Layout = ({ children }: Props) => {
   return (
-    <div style={{ margin: '15px auto', maxWidth: '1440px' }}>
+    <div style={{ margin: '0 auto', maxWidth: '1440px' }}>
       <Header />
       {children}
     </div>

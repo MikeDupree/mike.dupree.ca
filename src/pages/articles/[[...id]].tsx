@@ -1,26 +1,26 @@
-import React, { useEffect } from 'react'
 import { GetStaticProps } from 'next'
 import { getArticle, getArticles, getArticlesTree, ArticleTreeItem } from '../../Articles';
 import ArticlesList from '../../components/ArticlesList';
 import Article from '../../components/Article';
+import Container from '../../components/Container';
 
 type Props = {
   body: string,
   articles: ArticleTreeItem[]
 }
 
-const Articles = ({ body, articles }: Props) => {
-
-  if (!body) {
-    return (
-      <div>
-        <ArticlesList articles={articles} />
-      </div>
-    )
-  }
-  return (
-    <Article body={body} />
+const ArticlesViewFactory = ({ body, articles }: Props) => {
+  return !body ? (
+    <ArticlesList articles={articles} />
   )
+    : (
+      <Article body={body} />
+    )
+}
+
+
+const Articles = (props: Props) => {
+  return <Container><ArticlesViewFactory {...props} /></Container>
 }
 
 export default Articles;

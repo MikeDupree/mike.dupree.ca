@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import Image from 'next/image';
 import hljs from 'highlight.js';
 import showdown from 'showdown';
 
@@ -13,7 +14,8 @@ type Props = {
 }
 
 const Article = ({ body }: Props) => {
-  console.log('html', converter.makeHtml(body).replaceAll('<br />', ''))
+  const articleContentHtml = converter.makeHtml(body).replaceAll('<br />', '').replaceAll('img', 'Image');
+  console.log({articleContentHtml});
   useEffect(() => {
     console.log('Set highlightAll');
     hljs.highlightAll();
@@ -21,7 +23,7 @@ const Article = ({ body }: Props) => {
 
   return (
     <div className='article'>
-      <div dangerouslySetInnerHTML={{ __html: converter.makeHtml(body).replaceAll('<br />', '') }} />
+      <div dangerouslySetInnerHTML={{ __html: articleContentHtml }} />
     </div>
   )
 }

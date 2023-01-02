@@ -1,3 +1,4 @@
+import styled from '@emotion/styled'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { ArticleTreeItem } from '../Articles'
@@ -36,6 +37,24 @@ const Filters = ({ tags, selected, callback }: FiltersProps) => {
     </div>
   );
 }
+
+const TagList = styled.ul({
+  '& li': {
+    '&::marker': {
+      content: '""',
+    },
+    '& a': {
+      marginLeft: '7px',
+    }
+  },
+  '& .articleList li':{
+    '&::marker': {
+      content: '">"',
+      color: '#DA7110',
+    },
+  }
+});
+
 const ArticlesList = ({ articles }: Props) => {
   const [filter, setFilter] = useState('');
   const articleTags = [...new Set(articles.map(a => a.tags))];
@@ -51,24 +70,20 @@ const ArticlesList = ({ articles }: Props) => {
         </div>
         <div>
           {filter ? filter : 'all articles'}
-          <ul>
+          <TagList>
             {articleTags.filter((tag) => filter ? filter === tag : true).map((tag) => (
               <>
                 <li style={{ fontWeight: 'bold' }}>{tag}</li>
                 <li key={tag} style={{ listStyle: 'none' }}>
-                  <ul>
+                  <ul className='articleList'>
                     {articles.filter(a => a.tags === tag).map((article) => (
-                      <li key={article.id} style={{
-                        content: '>',
-                        color: '#DA7110'
-                      }}
-                      ><Link href={`/${article.path}`}>{article.name}</Link></li>
+                      <li key={article.id}><Link href={`/${article.path}`}>{article.name}</Link></li>
                     ))}
                   </ul>
                 </li>
               </>
             ))}
-          </ul>
+          </TagList>
         </div>
       </div>
     </div>
