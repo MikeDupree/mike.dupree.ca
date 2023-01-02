@@ -19,7 +19,7 @@ export interface GitlabTreeItem {
 }
 
 export interface ArticleTreeItem extends GitlabTreeItem {
-  tag: string;
+  tags: string;
 }
 
 export const getArticlesTree = async (): Promise<GitlabTreeItem[]> => {
@@ -34,8 +34,13 @@ export const getArticlesTree = async (): Promise<GitlabTreeItem[]> => {
 
 export const getArticles = async (): Promise<ArticleTreeItem[]> => {
   const response = await getArticlesTree();
-  return response.filter((a) => a.type === 'blob' && a.name !== 'README.md').map(a => ({
-    ...a,
-    tag: a.path.split('/')?.[1]
-  }));
+  return response.filter((a) => a.type === 'blob' && a.name !== 'README.md').map(a => {
+    const path = a.path.split('/');
+    const tags = path.slice(1, path.length - 1).join('/');
+    return {
+      ...a,
+      name: a.name.split('.')[0],
+      tags
+    }
+  });
 }
