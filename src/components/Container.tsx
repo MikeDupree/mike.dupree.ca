@@ -8,7 +8,6 @@ const StyledContainer = styled.div({
 
 type Props = {
   children: ReactNode;
-  sticky: boolean
 }
 
 const Container = ({ children, ...rest }: Props) => {
