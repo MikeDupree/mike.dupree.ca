@@ -20,7 +20,8 @@ const DynamicNavigationLink = () => {
 
 const StyledHeader = styled.div({
   padding: '0 25px',
-  position: 'fixed',
+  position: 'sticky',
+  top: 0,
   width: '100%',
   height: '51px',
   background: '#282a36',
