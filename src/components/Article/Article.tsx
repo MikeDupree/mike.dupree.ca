@@ -16,9 +16,7 @@ type Props = {
 
 const Article = ({ body }: Props) => {
   const articleContentHtml = converter.makeHtml(body).replaceAll('<br />', '').replaceAll('img', 'Image');
-  console.log({ articleContentHtml });
   useEffect(() => {
-    console.log('Set highlightAll');
     hljs.highlightAll();
   }, []);
 
