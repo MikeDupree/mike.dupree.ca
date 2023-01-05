@@ -1,7 +1,11 @@
 import Link from 'next/link'
-import React from 'react'
 import { useRouter } from 'next/router';
 import styled from '@emotion/styled';
+import { css } from '@emotion/react';
+
+const breakpoints = [576, 768, 992, 1200]
+
+const m = breakpoints.map(bp => `@media (max-width: ${bp}px)`)
 
 type Props = {}
 
@@ -10,9 +14,7 @@ const DynamicNavigationLink = () => {
   const uriArgs = asPath.split('/');
   if (uriArgs.length > 2) {
     return (
-      <div style={{ padding: '3px 20px' }}>
-        <Link href={`/${uriArgs[1]}`}><><div style={{ color: '#DA7110', display: 'inline', fontSize: '1.5rem' }}>{`↚`} </div>{`${uriArgs[1].toUpperCase()}`}</></Link>
-      </div>
+      <Link href={`/${uriArgs[1]}`}><><div style={{ color: '#DA7110', display: 'inline', fontSize: '1.5rem' }}>{`↚`} </div>{`${uriArgs[1].toUpperCase()}`}</></Link>
     )
   }
   return <></>
@@ -34,7 +36,12 @@ const Header = (props: Props) => {
 
   return <StyledHeader>
     <div style={{ padding: '10px 0', borderBottom: '1px solid rgba(255, 255, 255, 0.13)', fontSize: '1.2rem', display: 'flex', alignContent: 'space-between' }}>
-      <div style={{ width: '33%' }}>
+      <div css={{
+        width: '33%',
+        [m[0]]: {
+          width: '50%',
+        }
+      }}>
         <Link href="/">
           <p style={{
             margin: '0',
@@ -43,14 +50,25 @@ const Header = (props: Props) => {
           }} >Michael Dupree</p>
         </Link>
       </div>
-      <div style={{ width: '33%', textAlign: 'center' }}>
-      {asPath.split('/').pop()}
+      <div css={{
+        width: '33%',
+        textAlign: 'center',
+        [m[0]]: {
+          display: 'none',
+        }
+      }}>
+        {asPath.split('/').pop()}
       </div>
-      <div style={{ width: '33%', display: 'flex', justifyContent: 'flex-end' }}>
+      <div css={{
+        width: '33%', display: 'flex', justifyContent: 'flex-end',
+        [m[0]]: {
+          width: '50%',
+        }
+      }}>
         <DynamicNavigationLink />
       </div>
     </div>
-  </StyledHeader>
+  </StyledHeader >
 }
 
 export default Header
