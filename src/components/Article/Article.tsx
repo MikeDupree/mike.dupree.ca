@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import styles from './Article.css';
 import styled from '@emotion/styled';
 import hljs from 'highlight.js';
-import showdown from 'showdown';
+import { setFlavor, Converter, setOption } from 'showdown';
 
-showdown.setFlavor('github');
-const converter = new showdown.Converter();
-showdown.setOption('simpleLineBreaks', false);
+setFlavor('github');
+const converter = new Converter();
+setOption('simpleLineBreaks', false);
 
 const StyledArticle = styled.div(styles);
 

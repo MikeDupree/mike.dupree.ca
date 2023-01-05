@@ -47,7 +47,7 @@ const TagList = styled.ul({
       marginLeft: '7px',
     }
   },
-  '& .articleList li':{
+  '& .articleList li': {
     '&::marker': {
       content: '">"',
       color: '#DA7110',
@@ -70,20 +70,18 @@ const ArticlesList = ({ articles }: Props) => {
         </div>
         <div>
           {filter ? filter : 'all articles'}
-          <TagList>
-            {articleTags.filter((tag) => filter ? filter === tag : true).map((tag) => (
-              <>
-                <li style={{ fontWeight: 'bold' }}>{tag}</li>
-                <li key={tag} style={{ listStyle: 'none' }}>
-                  <ul className='articleList'>
-                    {articles.filter(a => a.tags === tag).map((article) => (
-                      <li key={article.id}><Link href={`/${article.path}`}>{article.name}</Link></li>
-                    ))}
-                  </ul>
-                </li>
-              </>
-            ))}
-          </TagList>
+          {articleTags.filter((tag) => filter ? filter === tag : true).map((tag) => (
+            <TagList key={tag} >
+              <li style={{ fontWeight: 'bold' }}>{tag}</li>
+              <li style={{ listStyle: 'none' }}>
+                <ul className='articleList'>
+                  {articles.filter(a => a.tags === tag).map((article) => (
+                    <li key={article.id}><Link href={`/${article.path}`}>{article.name}</Link></li>
+                  ))}
+                </ul>
+              </li>
+            </TagList>
+          ))}
         </div>
       </div>
     </div>
