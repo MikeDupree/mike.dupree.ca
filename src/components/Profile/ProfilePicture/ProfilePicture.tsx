@@ -10,7 +10,7 @@ const StyledProfilePicture = styled.div(styles);
 const ProfilePicture = (props: Props) => {
   return (
     <StyledProfilePicture>
-      <Image src="/profile.jpeg" width={250} height={250} alt="Mike Dupree" style={{ borderRadius: "50%" }} />
+      <Image priority src="/profile.jpeg" width={250} height={250} alt="Mike Dupree" style={{ borderRadius: "50%" }} />
     </StyledProfilePicture>
   )
 }
