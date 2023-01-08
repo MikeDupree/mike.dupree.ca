@@ -1,8 +1,9 @@
 import { GetStaticProps } from 'next'
-import { getArticle, getArticles, getArticlesTree, ArticleTreeItem } from '../../Articles';
-import ArticlesList from '../../components/ArticlesList';
-import Article from '../../components/Article';
-import Container from '../../components/Container';
+import Head from 'next/head';
+import { getArticle, getArticles, getArticlesTree, ArticleTreeItem } from '@/Articles';
+import ArticlesList from '@/components/ArticlesList';
+import Article from '@/components/Article';
+import Container from '@/components/Container';
 
 type Props = {
   body: string,
@@ -20,7 +21,15 @@ const ArticlesViewFactory = ({ body, articles }: Props) => {
 
 
 const Articles = (props: Props) => {
-  return <Container><ArticlesViewFactory {...props} /></Container>
+  return <>
+    <Head>
+      <title>Michael Dupree</title>
+      <meta name="description" content="Personal site" />
+      <link rel="icon" href="/favicon.ico" />
+    </Head>
+
+    <Container><ArticlesViewFactory {...props} /></Container>
+  </>
 }
 
 export default Articles;

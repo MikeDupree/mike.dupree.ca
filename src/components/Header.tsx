@@ -1,11 +1,9 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router';
 import styled from '@emotion/styled';
-import { css } from '@emotion/react';
+import { mediaQueries } from '@/theme';
 
-const breakpoints = [576, 768, 992, 1200]
-
-const m = breakpoints.map(bp => `@media (max-width: ${bp}px)`)
+const { sm } = mediaQueries;
 
 type Props = {}
 
@@ -38,7 +36,7 @@ const Header = (props: Props) => {
     <div style={{ padding: '10px 0', borderBottom: '1px solid rgba(255, 255, 255, 0.13)', fontSize: '1.2rem', display: 'flex', alignContent: 'space-between' }}>
       <div css={{
         width: '33%',
-        [m[0]]: {
+        [sm]: {
           width: '50%',
         }
       }}>
@@ -53,7 +51,7 @@ const Header = (props: Props) => {
       <div css={{
         width: '33%',
         textAlign: 'center',
-        [m[0]]: {
+        [sm]: {
           display: 'none',
         }
       }}>
@@ -61,7 +59,7 @@ const Header = (props: Props) => {
       </div>
       <div css={{
         width: '33%', display: 'flex', justifyContent: 'flex-end',
-        [m[0]]: {
+        [sm]: {
           width: '50%',
         }
       }}>
