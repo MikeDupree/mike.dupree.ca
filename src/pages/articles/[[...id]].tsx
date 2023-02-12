@@ -23,7 +23,7 @@ const ArticlesViewFactory = ({ body, articles }: Props) => {
 const Articles = (props: Props) => {
   return <>
     <Head>
-      <title>Michael Dupree</title>
+      <title>Articles | Michael Dupree</title>
       <meta name="description" content="Personal site" />
       <link rel="icon" href="/favicon.ico" />
     </Head>
