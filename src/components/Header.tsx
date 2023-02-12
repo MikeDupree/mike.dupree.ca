@@ -24,7 +24,7 @@ const StyledHeader = styled.div({
   top: 0,
   width: '100%',
   height: '51px',
-  background: '#282a36',
+  background: '#1a1a1a',
 },
 );
 

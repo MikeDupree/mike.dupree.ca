@@ -2,13 +2,21 @@ html {
   min-width: 320px;
 }
 
+html, 
+body,
+body > div:first-child,
+div#__next,
+div#__next > div {
+  height: 100%;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: 'Roboto Mono', monospace, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background: #282a36;
+  background: #1a1a1a;
   color: #dedede;
 
 }
