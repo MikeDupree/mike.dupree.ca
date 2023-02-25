@@ -1,7 +1,6 @@
 import type { AppProps } from 'next/app'
 import '../styles/globals.css'
 import '../styles/dracula.css';
-import 'highlight.js/styles/github.css';
 import Layout from '../components/Layout';
 import { Roboto_Slab } from '@next/font/google'
 import { createTheme, NextUIProvider } from "@nextui-org/react"

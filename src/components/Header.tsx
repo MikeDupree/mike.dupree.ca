@@ -3,6 +3,8 @@ import { useRouter } from 'next/router';
 import styled from '@emotion/styled';
 import { mediaQueries } from '@/theme';
 
+import { TypeAnimation } from 'react-type-animation';
+
 const { sm } = mediaQueries;
 
 type Props = {}
@@ -41,11 +43,26 @@ const Header = (props: Props) => {
         }
       }}>
         <Link href="/">
-          <p style={{
-            margin: '0',
-            fontSize: '1.5rem',
-            fontFamily: 'Yellowtail, cursive'
-          }} >Michael Dupree</p>
+          <TypeAnimation
+          className='TypeAnimation'
+            sequence={[
+              'Mike Dupree', // Types 'One'
+              1000, // Waits 1s
+              'Software Developer', // Deletes 'One' and types 'Two'
+              2000, // Waits 2s
+              '< Back', // Types 'Three' without deleting 'Two'
+              3000,
+              () => {
+                console.log('Done typing!'); // Place optional callbacks anywhere in the array
+              }
+            ]}
+            wrapper="div"
+            cursor={true}
+            repeat={Infinity}
+            style={{
+              fontSize: '1em',
+            }}
+          />
         </Link>
       </div>
       <div css={{

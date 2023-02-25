@@ -42,6 +42,7 @@ export async function getStaticPaths() {
       { params: { id: treeItem.path.split('/').filter((p: string) => p !== 'articles') } }
     ))];
   }
+
   return {
     paths,
     fallback: 'blocking',

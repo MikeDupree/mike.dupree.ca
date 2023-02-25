@@ -64,3 +64,9 @@ a {
     background: black;
   }
 }
+
+
+.TypeAnimation::after {
+  color: #20C20E;
+  font-weight: bolder;
+}
