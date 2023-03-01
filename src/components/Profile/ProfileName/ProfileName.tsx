@@ -10,49 +10,14 @@ const ProfileName = (props: Props) => {
   return (
     <StyledProfile>
       <h1>
- <TypeAnimation
-          className='TypeAnimation'
-          sequence={[
-            'Michael Dupree',
-          ]}
-          wrapper="div"
-          cursor={false}
-        />
-
+        Mike Dupree
       </h1>
       <h2>
-        <TypeAnimation
-          className='TypeAnimation'
-          sequence={[
-            1000,
-            'Software Developer',
-            700, // Waits 1s
-            'Software Engineer',
-            700, // Waits 2s
-            'Software Architect',
-            3000,
-          ]}
-          wrapper="div"
-          cursor={true}
-          style={{
-            fontSize: '1em',
-          }}
-        />
-        </h2>
+        Software Engineer
+      </h2>
       <h3>
-        <TypeAnimation
-          className='TypeAnimation'
-          sequence={[
-            5700,
-            '🇨🇦 BC, Canada'
-          ]}
-          wrapper="div"
-          cursor={true}
-          style={{
-            fontSize: '1em',
-          }}
-        />
-        </h3>
+        🇨🇦 BC, Canada
+      </h3>
 
     </StyledProfile>
   )

@@ -17,10 +17,6 @@ export default function Home() {
 
         <footer className={styles.footer}>
           <div className={styles.link}>
-            <Link href="/articles">
-              <h3>Articles</h3>
-            </Link>
-
             <Link href="/projects">
               <h3>Projects</h3>
             </Link>

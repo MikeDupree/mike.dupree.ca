@@ -14,7 +14,14 @@ const DynamicNavigationLink = () => {
   const uriArgs = asPath.split('/');
   if (uriArgs.length > 2) {
     return (
-      <Link href={`/${uriArgs[1]}`}><><div style={{ color: '#DA7110', display: 'inline', fontSize: '1.5rem' }}>{`↚`} </div>{`${uriArgs[1].toUpperCase()}`}</></Link>
+      <Link href={`/${uriArgs[1]}`}>
+        <>
+          <div style={{ color: '#DA7110', display: 'inline', fontSize: '1.5rem' }}>
+            {`↚`}
+          </div>
+          {`${uriArgs[1].toUpperCase()}`}
+        </>
+      </Link>
     )
   }
   return <></>
@@ -44,7 +51,7 @@ const Header = (props: Props) => {
       }}>
         <Link href="/">
           <TypeAnimation
-          className='TypeAnimation'
+            className='TypeAnimation'
             sequence={[
               'Mike Dupree', // Types 'One'
               1000, // Waits 1s

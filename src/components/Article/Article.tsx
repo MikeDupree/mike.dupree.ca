@@ -3,7 +3,6 @@ import styles from './Article.css';
 import styled from '@emotion/styled';
 import hljs from 'highlight.js';
 import { setFlavor, Converter, setOption } from 'showdown';
-import { TypeAnimation } from 'react-type-animation';
 
 const converter = new Converter();
 setOption('simpleLineBreaks', false);
@@ -16,8 +15,6 @@ type Props = {
 
 const Article = ({ body }: Props) => {
   const articleContentHtml = converter.makeHtml(body).replaceAll('img', 'Image')
-  .replaceAll('<pre>', '<TypeAnimation><pre>')
-  .replaceAll('</pre>', '</TypeAnimation></pre>');
 
   console.log(articleContentHtml);
   useEffect(() => {
