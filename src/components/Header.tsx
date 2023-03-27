@@ -24,7 +24,7 @@ const StyledHeader = styled.div({
   top: 0,
   width: '100%',
   height: '51px',
-  background: '#282a36',
+  background: '#080808',
 },
 );
 
@@ -43,8 +43,10 @@ const Header = (props: Props) => {
           }} >Michael Dupree</p>
         </Link>
       </div>
-      <div style={{ width: '33%', textAlign: 'center' }}>
-      {asPath.split('/').pop()}
+      <div style={{ width: '33%', textAlign: 'center', verticalAlign: 'center' }}>
+        <div style={{ padding: '6px 20px' }}>
+          {asPath.split('/').pop()}
+        </div>
       </div>
       <div style={{ width: '33%', display: 'flex', justifyContent: 'flex-end' }}>
         <DynamicNavigationLink />
