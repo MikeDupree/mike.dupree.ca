@@ -1,8 +1,9 @@
 import { GetStaticProps } from 'next'
-import { getArticle, getArticles, getArticlesTree, ArticleTreeItem } from '../../Articles';
-import ArticlesList from '../../components/ArticlesList';
-import Article from '../../components/Article';
-import Container from '../../components/Container';
+import Head from 'next/head';
+import { getArticle, getArticles, getArticlesTree, ArticleTreeItem } from '@/Articles';
+import ArticlesList from '@/components/ArticlesList';
+import Article from '@/components/Article';
+import Container from '@/components/Container';
 
 type Props = {
   body: string,
@@ -20,7 +21,15 @@ const ArticlesViewFactory = ({ body, articles }: Props) => {
 
 
 const Articles = (props: Props) => {
-  return <Container><ArticlesViewFactory {...props} /></Container>
+  return <>
+    <Head>
+      <title>Articles | Michael Dupree</title>
+      <meta name="description" content="Personal site" />
+      <link rel="icon" href="/favicon.ico" />
+    </Head>
+
+    <Container><ArticlesViewFactory {...props} /></Container>
+  </>
 }
 
 export default Articles;
@@ -33,9 +42,10 @@ export async function getStaticPaths() {
       { params: { id: treeItem.path.split('/').filter((p: string) => p !== 'articles') } }
     ))];
   }
+
   return {
     paths,
-    fallback: false, // can also be true or 'blocking'
+    fallback: 'blocking',
   }
 }
 
@@ -62,5 +72,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
       body,
       articles
     },
+    revalidate: 60,
   }
 }
